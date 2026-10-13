@@ -1,18 +1,27 @@
-# Multilingual Love Heart ❤️
+# Love You
 
-A generative typographic art experiment in Python that renders a heart silhouette composed of "I love you" in 20 different languages, featuring smooth floating animations and a subtle shimmering effect.
+A small generative typographic piece: a heart made of *I love you* in many languages, drawn with Python’s standard library.
 
-<img width="1302" height="752" alt="WhatsApp Image 2026-10-09 at 09 53 02" src="https://github.com/user-attachments/assets/6c2ccffe-f46d-4b2f-9430-36a6a5739beb" />
-
-
-## Features
-- **Parametric Heart Boundary:** Uses a parametric heart curve to calculate exact scanline boundaries and text placement.
-- **Multilingual Typography:** Cycles dynamically through love phrases in 20 languages with proportional font scaling.
-- **Smooth Animation:** Eased vertical float-in transitions (`cubic ease-out`) with color grading from deep crimson to glowing edges.
-- **Post-Render Shimmer:** Continuous ambient glimmers on random phrases once drawing completes.
-- **Zero External Dependencies:** Built entirely with Python's standard library (`turtle`, `tkinter`, `math`, `random`).
-
-## How to Run
+## Run
 
 ```bash
 python love.py
+```
+
+No packages to install. Needs a desktop Python with Tk (the usual `python.org` and Windows installs include it).
+
+## While it plays
+
+| Key | Action |
+| --- | --- |
+| click or space | play again (same layout) |
+| r | new random heart |
+| esc | close |
+
+Phrases pick a system font that can actually draw that script (Hangul, CJK, Devanagari, Thai, Arabic, Hebrew, Cyrillic), so the silhouette stays readable instead of falling back to boxes.
+
+Spawn follows a heartbeat cadence. After the last word lands, the type breathes and occasional phrases glimmer.
+
+## How the shape is built
+
+The classic parametric heart curve is scan-converted into rows. Each row is packed with shuffled phrases until the chord is full, then the line is gently justified so the silhouette stays dense at the edges. Rim words draw first, then the interior fills inward.
